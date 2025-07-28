@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -69,18 +69,18 @@
         transform-origin: right center;
     }
     .left div.one{
-        background-color: #FC7C7B;
+        background-color: #f36838;
     }
     .left div.two{
-        background-color: #F59462;
+        background-color: #fff2df;
         transform: rotate(-45deg);
     }
     .left div.three{
-        background-color:#FC7C7B;
+        background-color:#bddd22;
         transform: rotate(-90deg);
     }
     .left div.four {
-        background-color: #F59462;
+        background-color: #ff8936;
         transform: rotate(-135deg);
     }
     .right div{
@@ -92,24 +92,24 @@
         transform-origin: left center;
     }
     .right div.one {
-        background-color: #FC7C7B;
+        background-color: #70f3ff;
     }
     .right div.two{
-        background-color: #F59462;
+        background-color: #0aa344;
         transform: rotate(45deg);
     }
     .right div.three{
-        background-color: #FC7C7B;
+        background-color: #fff143;
         transform: rotate(90deg);
     }
     .right div.four{
-        background-color: #fff;
+        background-color:#c3272b;
         transform: rotate(135deg);
     }
     .circle{
         width: 100px;
         height: 100px;
-        background-color: #f2552e;
+        background-color: #44cef6;
         position: absolute;
         left: 50%;
         top: 50%;
@@ -125,7 +125,7 @@
     .circle::after{
         width: 0;
         height: 0;
-        border: 40px solid #f2552e;
+        border: 40px solid #44cef6;
         border-left-width: 10px;
         border-right-width: 10px;
         position: absolute;
@@ -162,13 +162,13 @@
         let wapper = document.querySelector(".wapper");
         let textAll = document.querySelectorAll(".wapper .text");
     // 这里是奖项的名字
-        let prize = ["1号大奖","2号大奖","3号大奖","4号大奖","5号大奖","6号大奖","7号大奖","安慰奖"];
-    // 权重数组 不同奖项的权重值  权重越高越容易中这个区域
-    let prizeWeight = [1,2,5,7,10,15,50,30];
+        let prize = ["粉类", "面类", "炒类", "饼类", "麻辣烫类", "速食类", "油脂类", "不吃"];
+    // 权重数组 不同奖项的权重值  现在权重相同，每个奖项被选中的概率相等
+        let prizeWeight = new Array(prize.length).fill(1);
     // 权重之和
-    let weighSum = prizeWeight.reduce(function (prevValue, curVal) {
+        let weighSum = prizeWeight.reduce(function (prevValue, curVal) {
         return prevValue + curVal;
-    });
+        });
 
     for (let i = 0; i < textAll.length; i++) {
         textAll[i].innerHTML = prize[i];
@@ -238,246 +238,5 @@
     }
     </script>
 </body>
-</html> -->
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>抽奖转盘</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .outher {
-            width: 300px;
-            height: 300px;
-            position: relative;
-            border-radius: 50%;
-        }
-
-        .wapper {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-color: black;
-            transform: rotate(22.5deg);
-        }
-
-        .left {
-            position: absolute;
-            width: 150px;
-            height: 300px;
-            left: 0;
-            overflow: hidden;
-        }
-
-        .left .text {
-            position: absolute;
-            top: 30px;
-            left: 50%;
-            transform: rotate(-22.5deg);
-            text-align: center;
-        }
-
-        .right .text {
-            position: absolute;
-            top: 25px;
-            left: 11%;
-            transform: rotate(22.5deg);
-            text-align: center;
-        }
-
-        .right {
-            position: absolute;
-            width: 150px;
-            height: 300px;
-            right: 0;
-            overflow: hidden;
-            text-align: center;
-        }
-
-        .left div {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            transform-origin: right center;
-        }
-
-        .left div.one {
-            background-color: #FC7C7B;
-        }
-
-        .left div.two {
-            background-color: #F59462;
-            transform: rotate(-45deg);
-        }
-
-        .left div.three {
-            background-color: #FC7C7B;
-            transform: rotate(-90deg);
-        }
-
-        .left div.four {
-            background-color: #F59462;
-            transform: rotate(-135deg);
-        }
-
-        .right div {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            transform-origin: left center;
-        }
-
-        .right div.one {
-            background-color: #FC7C7B;
-        }
-
-        .right div.two {
-            background-color: #F59462;
-            transform: rotate(45deg);
-        }
-
-        .right div.three {
-            background-color: #FC7C7B;
-            transform: rotate(90deg);
-        }
-
-        .right div.four {
-            background-color: #fff;
-            transform: rotate(135deg);
-        }
-
-        .circle {
-            width: 100px;
-            height: 100px;
-            background-color: #f2552e;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            text-align: center;
-            line-height: 100px;
-            font-size: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            user-select: none;
-        }
-
-        .circle::after {
-            width: 0;
-            height: 0;
-            border: 40px solid #f2552e;
-            border-left-width: 10px;
-            border-right-width: 10px;
-            position: absolute;
-            content: "";
-            border-left-color: transparent;
-            border-top-color: transparent;
-            border-right-color: transparent;
-            top: -70px;
-            left: calc(50% - 10px);
-            z-index: -1;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="outher">
-        <div class="wapper">
-            <div class="left">
-                <div class="one"><span class="text"></span></div>
-                <div class="two"><span class="text"></span></div>
-                <div class="three"><span class="text"></span></div>
-                <div class="four"><span class="text"></span></div>
-            </div>
-            <div class="right">
-                <div class="one"><span class="text"></span></div>
-                <div class="two"><span class="text"></span></div>
-                <div class="three"><span class="text"></span></div>
-                <div class="four"><span class="text"></span></div>
-            </div>
-        </div>
-        <div class="circle">抽奖</div>
-    </div>
-    <script>
-        let wapper = document.querySelector(".wapper");
-        let textAll = document.querySelectorAll(".wapper .text");
-        // 这里是奖项的名字
-        let prize = ["粉类", "面类", "炒类", "饼类", "麻辣烫类", "速食类", "油脂类", "不吃"];
-        // 权重数组 不同奖项的权重值  权重越高越容易中这个区域
-        let prizeWeight = [1, 2, 5, 7, 10, 15, 50, 30];
-        // 权重之和
-        let weighSum = prizeWeight.reduce(function (prevValue, curVal) {
-            return prevValue + curVal;
-        });
-
-        for (let i = 0; i < textAll.length; i++) {
-            textAll[i].innerHTML = prize[i];
-        }
-
-        let isFlag = true;
-        document.querySelector(".circle").onclick = function () {
-            if (isFlag) {
-                // 生成一个 0 到权重之和之间的随机数
-                let randomNum = Math.random() * weighSum;
-                let sum = 0;
-                let randomIndex = 0;
-                // 根据随机数和权重确定中奖索引
-                for (let i = 0; i < prizeWeight.length; i++) {
-                    sum += prizeWeight[i];
-                    if (randomNum < sum) {
-                        randomIndex = i;
-                        break;
-                    }
-                }
-
-                let text = prize[randomIndex];
-                // 每个区域的角度
-                let anglePerSection = 360 / prize.length;
-                // 计算中奖区域的中心角度
-                let targetAngle = randomIndex * anglePerSection + anglePerSection / 2 - 22.5;
-                // 旋转多圈后再到达目标角度
-                let fullRotations = 5; // 旋转5圈
-                let totalAngle = fullRotations * 360 + targetAngle;
-                run(totalAngle, text);
-            }
-        };
-
-        function run(angle, text) {
-            isFlag = false;
-            let begin = 0;
-            let timer = null;
-            timer = setInterval(function () {
-                if (begin > angle) {
-                    isFlag = true;
-                    clearInterval(timer);
-                }
-                wapper.style.transform = `rotate(${begin}deg)`;
-                // 线性增加旋转角度
-                begin += 10;
-            }, 20);
-            console.log(text);
-        }
-    </script>
-</body>
-
 </html>
+
